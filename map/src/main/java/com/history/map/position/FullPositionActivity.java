@@ -1,25 +1,23 @@
-package com.history.map.user;
+package com.history.map.position;
 
 import android.annotation.TargetApi;
-import android.content.Intent;
+import android.app.Activity;
 import android.os.Build;
-import android.os.Handler;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.os.Handler;
 import android.view.View;
-import android.widget.Button;
 import com.history.map.R;
-import com.history.map.position.FullPositionActivity;
 import com.history.map.util.SystemUiHider;
 
-public class FullUserActivity extends ActionBarActivity {
+/**
+ * Created by pi on 15. 3. 16.
+ */
+public class FullPositionActivity extends Activity {
 
     /**
-     * Whether or not the system UI should be auto-hidden after
-     * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
-     */
+    * Whether or not the system UI should be auto-hidden after
+    * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
+    */
     private static final boolean AUTO_HIDE = true;
 
     /**
@@ -35,7 +33,7 @@ public class FullUserActivity extends ActionBarActivity {
     private static final boolean TOGGLE_ON_CLICK = true;
 
     /**
-     * The flags to pass to {@link SystemUiHider#getInstance}.
+     * The flags to pass to {@link com.history.map.util.SystemUiHider#getInstance}.
      */
     private static final int HIDER_FLAGS = SystemUiHider.FLAG_HIDE_NAVIGATION;
 
@@ -47,10 +45,10 @@ public class FullUserActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_full_user);
+        setContentView(R.layout.activity_full_position);
 
-        final View controlsView = findViewById(R.id.fullscreen_user_content_controls);
-        final View contentView = findViewById(R.id.fullscreen_user_content);
+        final View controlsView = findViewById(R.id.fullscreen_position_content_controls);
+        final View contentView = findViewById(R.id.fullscreen_position_content);
 
         // Set up an instance of SystemUiHider to control the system UI for
         // this activity.
@@ -65,6 +63,10 @@ public class FullUserActivity extends ActionBarActivity {
             @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
             public void onVisibilityChange(boolean visible) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
+                    // If the ViewPropertyAnimator API is available
+                    // (Honeycomb MR2 and later), use it to animate the
+                    // in-layout UI controls at the bottom of the
+                    // screen.
                     if (mControlsHeight == 0) {
                         mControlsHeight = controlsView.getHeight();
                     }
@@ -72,6 +74,9 @@ public class FullUserActivity extends ActionBarActivity {
                         mShortAnimTime = getResources().getInteger(
                                 android.R.integer.config_shortAnimTime);
                     }
+                    controlsView.animate()
+                            .translationY(visible ? 0 : mControlsHeight)
+                            .setDuration(mShortAnimTime);
                 } else {
                     // If the ViewPropertyAnimator APIs aren't
                     // available, simply show or hide the in-layout UI
@@ -98,16 +103,6 @@ public class FullUserActivity extends ActionBarActivity {
             }
         });
 
-        Button button = (Button) findViewById(R.id.positionBtn);
-        
-        button.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), FullPositionActivity.class);
-                startActivity(intent);
-            }
-        });
-        
     }
 
     @Override
@@ -137,5 +132,4 @@ public class FullUserActivity extends ActionBarActivity {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
     }
-
 }
