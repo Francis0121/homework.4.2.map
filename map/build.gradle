@@ -13,9 +13,16 @@ repositories {
 }
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'HistoryActivirt'
+            keyPassword 'sg351a2f@'
+            storeFile file('/home/pi/git/homework.4.2.map/key/android.jks')
+            storePassword 'sg3512af@'
+        }
+    }
     compileSdkVersion 21
     buildToolsVersion "21.1.2"
-
     defaultConfig {
         applicationId "com.history.map"
         minSdkVersion 9
@@ -35,4 +42,5 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:21.0.3'
     compile 'com.android.support:support-v4:21.0.3'
+    compile 'com.google.android.gms:play-services:4.2.42'
 }
