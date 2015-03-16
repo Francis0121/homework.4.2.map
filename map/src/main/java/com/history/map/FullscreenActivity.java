@@ -105,11 +105,12 @@ public class FullscreenActivity extends Activity {
             public void run() {
                 Intent intent = new Intent(getApplicationContext(), FullUserActivity.class);
                 startActivity(intent);
+                finish();
             }
         };
 
         mHandler = new Handler();
-        mHandler.postDelayed(mRunnable, 2000);
+        mHandler.postDelayed(mRunnable, 1000);
     }
 
     @Override
