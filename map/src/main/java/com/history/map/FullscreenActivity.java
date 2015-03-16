@@ -1,6 +1,8 @@
 package com.history.map;
 
 import android.content.Intent;
+import android.view.Menu;
+import android.widget.ProgressBar;
 import com.history.map.user.FullUserActivity;
 import com.history.map.util.SystemUiHider;
 
@@ -46,7 +48,9 @@ public class FullscreenActivity extends Activity {
      * The instance of the {@link SystemUiHider} for this activity.
      */
     private SystemUiHider mSystemUiHider;
-
+    
+    private ProgressBar spinner;
+    
     private Handler mHandler;
     private Runnable mRunnable;
     
@@ -110,7 +114,11 @@ public class FullscreenActivity extends Activity {
         };
 
         mHandler = new Handler();
-        mHandler.postDelayed(mRunnable, 1000);
+        mHandler.postDelayed(mRunnable, 2000);
+        
+        // Set spinner
+        spinner = (ProgressBar)findViewById(R.id.spinner);
+        spinner.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -140,4 +148,5 @@ public class FullscreenActivity extends Activity {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
     }
+
 }

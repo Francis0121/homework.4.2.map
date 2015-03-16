@@ -18,8 +18,7 @@
 
         <activity
             android:name="com.history.map.user.FullUserActivity"
-            android:label="@string/title_activity_full_user">
-            
+            android:label="@string/app_name">
         </activity>
         
     </application>
