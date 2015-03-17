@@ -15,24 +15,47 @@
     
     <FrameLayout android:layout_width="match_parent"
                  android:layout_height="match_parent"
-                 android:fitsSystemWindows="true">
+                 android:fitsSystemWindows="true" android:id="@+id/frameLayout">
 
-        
+
         <LinearLayout android:id="@+id/fullscreen_user_content_controls"
                       android:layout_width="match_parent"
                       android:layout_height="match_parent"
                       android:orientation="horizontal"
                       tools:ignore="UselessParent">
-            
-            <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Map Position"
-                    android:id="@+id/positionBtn"/>
-            
-            
+
         </LinearLayout>
 
     </FrameLayout>
 
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="천안 독립기념관"
+            android:id="@+id/map01Btn"/>
+    
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="전주한옥마을"
+            android:id="@+id/map02Btn"
+            android:layout_below="@+id/fullscreen_user_content"
+            android:layout_marginTop="40dp" />
+    
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="제주도 성산일출봉"
+            android:id="@+id/map03Btn"
+            android:layout_below="@+id/fullscreen_user_content"
+            android:layout_marginTop="100dp" />
+
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="서울시청"
+            android:id="@+id/map04Btn"
+            android:layout_below="@+id/fullscreen_user_content"
+            android:layout_marginTop="160dp" />
+    
 </RelativeLayout>
