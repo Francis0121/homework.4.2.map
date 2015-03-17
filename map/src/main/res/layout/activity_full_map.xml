@@ -10,8 +10,7 @@
 
     <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp" 
-            android:id="@+id/frameLayout2">
+            android:layout_height="60dp" android:id="@+id/frameLayout2">
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -32,17 +31,13 @@
                 android:layout_gravity="right|top"/>
     </FrameLayout>
 
-    <FrameLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent" android:layout_below="@+id/frameLayout2">
-        <com.google.android.maps.MapView
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/map"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:clickable="true"
-                android:apiKey="AIzaSyAxi8dFi4nw35kKcHCJFblyV3lbU0V3Zfc"
-                android:layout_below="@+id/frameLayout2" android:layout_gravity="center_horizontal|top"/>
-    </FrameLayout>
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:id="@+id/map"
+              tools:context="com.history.map.position.MapsActivity"
+              android:name="com.google.android.gms.maps.MapFragment"
+              android:layout_below="@+id/frameLayout2"/>
 
 </RelativeLayout>
