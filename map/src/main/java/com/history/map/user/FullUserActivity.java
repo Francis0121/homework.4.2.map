@@ -2,7 +2,6 @@ package com.history.map.user;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -30,25 +29,31 @@ public class FullUserActivity extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         
+        String str = null;
         String uri = null;
     
         switch(v.getId()) {
             case R.id.map01Btn:
-                uri = "천안 독립기념관";
+                str = "천안 독립기념관";
+                uri = "http://m.map.naver.com/siteview.nhn?code=11620331";
                 break;
             case R.id.map02Btn:
-                uri = "전주한옥마을";
+                str = "전주한옥마을";
+                uri = "http://m.map.naver.com/siteview.nhn?code=13208779";
                 break;
             case R.id.map03Btn:
-                uri = "성산일출봉";
+                str = "성산일출봉";
+                uri = "http://m.map.naver.com/siteview.nhn?code=11491438";
                 break;
             case R.id.map04Btn:
-                uri = "서울시청";
+                str = "서울시청";
+                uri = "http://m.map.naver.com/siteview.nhn?code=11556036";
                 break;
         }
-        if(uri != null) {
+        if(str != null && uri != null) {
             Intent intent = new Intent(this, MapsActivity.class);
             intent.putExtra("uri", uri);
+            intent.putExtra("str", str);
             
             startActivity(intent);
         }
